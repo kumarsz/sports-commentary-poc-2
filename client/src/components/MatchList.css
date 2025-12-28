@@ -1,0 +1,234 @@
+/* MatchList.css */
+
+.match-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.match-list-container h2 {
+  font-size: 2rem;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid var(--border-color);
+  background: white;
+  color: var(--text-dark);
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.filter-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.filter-btn.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* Error Message */
+.error-message {
+  background: #ffe6e6;
+  border-left: 4px solid var(--danger-color);
+  padding: 1rem;
+  border-radius: 4px;
+  color: var(--danger-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.error-message p {
+  margin: 0;
+}
+
+/* No Matches */
+.no-matches {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  color: var(--text-dark);
+}
+
+/* Matches Grid */
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.match-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.match-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.status-badge,
+.format-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge {
+  background: #e8e8e8;
+  color: var(--text-dark);
+}
+
+.status-live {
+  background: linear-gradient(135deg, #ff6b6b, #ff5252);
+  color: white;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.status-scheduled {
+  background: linear-gradient(135deg, #4ecdc4, #44a7c6);
+  color: white;
+}
+
+.status-completed {
+  background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+  color: white;
+}
+
+.format-badge {
+  background: var(--accent-color);
+  color: white;
+}
+
+/* Match Teams */
+.match-teams {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  text-align: center;
+  flex-direction: column;
+}
+
+.team-logo {
+  font-size: 2rem;
+}
+
+.team-name {
+  font-weight: bold;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  word-wrap: break-word;
+}
+
+.vs-text {
+  color: var(--border-color);
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin: 0 0.5rem;
+}
+
+/* Match Details */
+.match-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex: 1;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.match-details p {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Match Footer */
+.match-footer {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.match-footer button {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* Spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-color);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .matches-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .match-teams {
+    font-size: 0.9rem;
+  }
+
+  .team-logo {
+    font-size: 1.5rem;
+  }
+}

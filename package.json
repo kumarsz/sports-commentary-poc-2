@@ -1,0 +1,26 @@
+{
+  "name": "cricketai-poc",
+  "version": "0.1.0",
+  "description": "CricketAI - AI-Powered Live Cricket Commentary PoC",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "node server/index.js",
+    "build": "echo 'No build step for PoC'",
+    "test": "echo 'No tests for PoC yet'"
+  },
+  "keywords": [
+    "cricket",
+    "commentary",
+    "ai",
+    "poc"
+  ],
+  "author": "kumarsz",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "openai": "^4.26.0"
+  },
+  "devDependencies": {}
+}

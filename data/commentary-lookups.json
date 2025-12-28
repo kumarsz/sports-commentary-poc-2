@@ -1,0 +1,130 @@
+{
+  "commentary_templates": {
+    "dot": [
+      "Tight line from the bowler. Just a dot.",
+      "No runs off that delivery!",
+      "Excellent bowling, well defended.",
+      "The bowler is on top here!",
+      "Solid defense, no runs given away."
+    ],
+    "single": [
+      "Easy single picked up!",
+      "A run off that one.",
+      "Single! Quick work on the field.",
+      "Just finding the gaps.",
+      "One more added to the total."
+    ],
+    "two": [
+      "Two! Good running between the wickets.",
+      "A comfortable two.",
+      "Two runs! The batsman was quick.",
+      "Pushing the ball around nicely.",
+      "A brace there."
+    ],
+    "four": [
+      "Boundary! That's a four!",
+      "Excellent shot for four!",
+      "Four! Beautiful batting!",
+      "Powered away for four!",
+      "Batter finds the boundary!"
+    ],
+    "six": [
+      "Out of the ground! That's a six!",
+      "Over the ropes! What a shot!",
+      "SIX! That's a monster hit!",
+      "Into the stands! Absolute carnage!",
+      "BOOM! That's gone for six!"
+    ],
+    "wicket": [
+      "That's OUT! What a breakthrough!",
+      "WICKET! The bowler strikes!",
+      "The batter has to go! Fantastic bowling!",
+      "One down! The pressure paid off!",
+      "GONE! Another one bites the dust!"
+    ],
+    "wicket_bowled": [
+      "BOWLED! Middle stump is destroyed!",
+      "Bowled! What a yorker!",
+      "The stumps are splayed! Clean bowled!"
+    ],
+    "wicket_lbw": [
+      "LBW! That's plumb in front!",
+      "Leg before wicket! Umpire's finger is up!",
+      "Hitting the pad! LBW given!"
+    ],
+    "wicket_caught": [
+      "CAUGHT! What a catch!",
+      "Out caught! The fielder has done the job!",
+      "Caught at the boundary! Fantastic grab!"
+    ]
+  },
+  "bowler_specific": {
+    "Bumrah": {
+      "dot": [
+        "Bumrah with a tight line. Dot ball.",
+        "Bumrah's accuracy is on display here.",
+        "Excellent bowling from Bumrah!"
+      ],
+      "yorker": [
+        "Bumrah's deadly yorker! Ripper!",
+        "Bumrah bowls a perfect yorker!",
+        "Yorker from Bumrah! What a delivery!"
+      ],
+      "wicket": [
+        "Bumrah strikes! Another one down!",
+        "Bumrah has his man! Brilliant bowling!"
+      ]
+    },
+    "Virat Kohli": {
+      "four": [
+        "Virat finds the boundary! Classic shot!",
+        "Virat plays it with class!",
+        "The King Kohli gets going!"
+      ],
+      "six": [
+        "Virat launches it! Over the ropes!",
+        "Vintage Virat! Absolute carnage!",
+        "Kohli on fire! That's a six!"
+      ]
+    },
+    "Rajat Patidar": {
+      "four": [
+        "Rajat Patidar puts it away!",
+        "Patidar finds the boundary!",
+        "The young gun strikes four!"
+      ],
+      "six": [
+        "PATIDAR! Into the stands!",
+        "Massive six from Patidar!",
+        "Patidar goes boom!"
+      ]
+    }
+  },
+  "dynamic_templates": {
+    "high_scoring": "Runs coming thick and fast here!",
+    "all_dots": "Dot ball sequence. The bowler is holding firm.",
+    "momentum_shift": "The pendulum has swung! Momentum shift in the match!",
+    "pressure_build": "The pressure is building! Dots in a row.",
+    "big_hit": "HUGE hit! The crowd erupts!"
+  },
+  "languages": {
+    "hindi": {
+      "wicket": "WICKET! Kya baat hai!",
+      "four": "Char! Boundary!",
+      "six": "Chhah! Stadium mein gaya!",
+      "dot": "Koi run nahi!"
+    },
+    "tamil": {
+      "wicket": "அவுட்! நன்றி!",
+      "four": "நான்கு! பவுண்டரி!",
+      "six": "ஆறு! வானில் போனது!",
+      "dot": "எதுவுமில்லை!"
+    },
+    "telugu": {
+      "wicket": "ఆట్! ఎంత మంచి ప్లే!",
+      "four": "నాలుగు! బౌండరీ!",
+      "six": "ఆరు! స్టేడియ‌మ్ లోకి పోయింది!",
+      "dot": "ఏదీ లేదు!"
+    }
+  }
+}
