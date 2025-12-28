@@ -1,5 +1,17 @@
 # Copilot Instructions for Sports Commentary PoC
 
+## 🔄 Quick Session Reminder
+
+**Before starting a new session:**
+1. Read `VISION.md` for strategic requirements
+2. Read `documentation/SESSION_CONTEXT_TEMPLATE.md` for current state
+3. Reference `documentation/ARCHITECTURE.md` for system design
+4. Check `documentation/LOGGING_GUIDE.md` for debugging
+
+**Remember:** This is a **PoC, not production**. Skip scaling, auth, monetization. Prove the concept works.
+
+---
+
 ## Project Goal
 Build a **proof-of-concept (PoC)** web-based sports commentary application: **CricketAI**.
 
