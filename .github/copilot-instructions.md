@@ -155,3 +155,20 @@ By the end of this PoC session, we should have:
 ## Let's Build
 
 Ready to define the system in natural language. What's the core flow of the sports commentary PoC?
+
+---
+
+## Documentation Organization
+
+**All documentation files should be placed in the `documentation/` folder.**
+
+When creating new documentation:
+- Session notes → `documentation/SESSION_CONTEXT_*.md`
+- Implementation guides → `documentation/*_IMPLEMENTATION.md`
+- Technical specs → `documentation/ARCHITECTURE.md`, `LOGGING_GUIDE.md`, etc.
+- Quick references → `documentation/QUICK_*.md`
+- Feature documentation → `documentation/*_GUIDE.md`
+
+This keeps the root directory clean and makes documentation discoverable.
+
+Do not generate documentation and testing until explicitly requested.

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CricketAI - VC Pitch Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0e27;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 80px;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Slide Backgrounds */
+        .slide.cover { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); }
+        .slide.problem { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .slide.solution { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .slide.market { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .slide.competitive { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .slide.business { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .slide.roadmap { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .slide.demo { background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%); }
+        .slide.closing { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 900px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .comparison-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .comparison-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .comparison-item {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .timeline-item {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            margin-right: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            border-left: 4px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .timeline-item:last-child {
+            margin-right: 0;
+        }
+
+        .timeline-phase {
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .timeline-detail {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 20px;
+            border-left: 4px solid rgba(255, 255, 255, 0.8);
+            margin: 30px 0;
+            border-radius: 4px;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .demo-container {
+            width: 90%;
+            height: 70%;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .demo-placeholder {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .demo-placeholder h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .demo-placeholder p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-prev { margin-right: auto; }
+        .btn-next { margin-left: auto; }
+
+        .slide-counter {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .slide-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .indicator-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator-dot.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .accent-color-1 { color: #f5576c; }
+        .accent-color-2 { color: #f093fb; }
+        .accent-color-3 { color: #4facfe; }
+
+        .ul-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .ul-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .ul-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .slide { padding: 40px 60px; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            .stat-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="slide-container">
+    <!-- Slide 1: Cover -->
+    <div class="slide cover active">
+        <div style="text-align: center;">
+            <div class="emoji">🎙️</div>
+            <h1>CricketAI</h1>
+            <p class="subtitle">Real-Time, AI-Powered Cricket Commentary for India's 500M+ Fans</p>
+            <p style="font-size: 1.3rem; margin-top: 60px; opacity: 0.85;">Proof of Concept • Ready to Demonstrate</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Problem -->
+    <div class="slide problem">
+        <h2>The Problem 🎯</h2>
+        <div class="content">
+            <p style="margin-bottom: 30px;">India has <strong>500M+ cricket fans</strong>, but they face a critical gap:</p>
+            <div class="comparison">
+                <div class="comparison-box">
+                    <div class="comparison-title">📊 Cricbuzz</div>
+                    <div class="comparison-item">✓ Live scores</div>
+                    <div class="comparison-item">✓ Match stats</div>
+                    <div class="comparison-item">✗ Static text only</div>
+                    <div class="comparison-item">✗ No personality</div>
+                    <div class="comparison-item">✗ No audio</div>
+                </div>
+                <div class="comparison-box" style="border-left-color: rgba(255, 255, 255, 0.8); background: rgba(255, 255, 255, 0.25);">
+                    <div class="comparison-title">❌ The Gap</div>
+                    <div class="comparison-item">No dramatic commentary</div>
+                    <div class="comparison-item">No regional languages</div>
+                    <div class="comparison-item">No audio playback</div>
+                    <div class="comparison-item">No personality-driven insights</div>
+                </div>
+            </div>
+            <div class="highlight">
+                Fans need dramatic, on-demand, personalized commentary in their own languages.
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Solution -->
+    <div class="slide solution">
+        <h2>The Solution 💡</h2>
+        <div class="content">
+            <p style="margin-bottom: 30px;">CricketAI delivers <strong>real-time, AI-powered, dramatic commentary</strong> in multiple regional languages.</p>
+            <ul class="ul-list">
+                <li><strong>Ball-by-ball AI commentary</strong> — Live, punchy, natural-sounding commentary like real broadcasters</li>
+                <li><strong>Two power modes:</strong>
+                  <br>&nbsp;&nbsp;&nbsp;&nbsp;🚀 <strong>Local (No AI):</strong> Instant template-based commentary, offline-capable
+                  <br>&nbsp;&nbsp;&nbsp;&nbsp;✨ <strong>Creative AI:</strong> Dynamic, engaging commentary powered by GPT-4/Gemini
+                </li>
+                <li><strong>Multi-language support:</strong> English, Hindi, Tamil, Telugu (+ extensible)</li>
+                <li><strong>Text-to-speech (TTS):</strong> Natural voices for immersive listening</li>
+                <li><strong>Live match simulation:</strong> Real or historical matches with fresh AI commentary</li>
+                <li><strong>No geographic restrictions:</strong> Works anywhere, anytime, offline-capable</li>
+            </ul>
+            <div class="highlight" style="margin-top: 40px;">
+                ✨ <strong>Future:</strong> Popular commentator voice personalities (Harsha Bhogle, Aakash Chopra, etc.) in V2
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Market Size -->
+    <div class="slide market">
+        <h2>Market Opportunity 📈</h2>
+        <div class="stat-grid">
+            <div class="stat-box">
+                <div class="stat-number">500M+</div>
+                <div class="stat-label">Cricket Fans in India</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">$3B+</div>
+                <div class="stat-label">Cricket Media Market (India)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">25%</div>
+                <div class="stat-label">Annual Growth (Sports Audio)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">12h+</div>
+                <div class="stat-label">Cricket Content Daily (IPL Season)</div>
+            </div>
+        </div>
+        <div class="highlight" style="margin-top: 40px;">
+            <strong>TAM/SAM Thesis:</strong> Free tier (local templates) reaches 500M fans. Premium tier (AI-generated commentary) targets 50M+ engaged fans willing to pay for personalized, dramatic commentary in their language.
+        </div>
+    </div>
+
+    <!-- Slide 5: Competitive Advantage -->
+    <div class="slide competitive">
+        <h2>Why We Win 🏆</h2>
+        <div class="content">
+            <ul class="ul-list">
+                <li><strong>First-mover in regional AI commentary:</strong> No competitor delivers dramatic commentary in Hindi/Tamil/Telugu</li>
+                <li><strong>Real-time generation:</strong> Personalized commentary within seconds, not pre-recorded</li>
+                <li><strong>Works offline:</strong> Local template mode works without internet or API keys</li>
+                <li><strong>Extensible architecture:</strong> Swap AI engines (OpenAI → Gemini → Local LLM) without code changes</li>
+                <li><strong>PoC validated:</strong> Core flow proven; ready to scale with real match data APIs</li>
+                <li><strong>Low cost to acquire:</strong> Free tier drives usage; premium upgrades organic</li>
+            </ul>
+            <div class="highlight" style="margin-top: 40px;">
+                Cricbuzz owns the score. We own the story.
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Business Model -->
+    <div class="slide business">
+        <h2>Monetization 💰</h2>
+        <div class="content">
+            <ul class="ul-list">
+                <li><strong>Freemium Model:</strong> Free tier (local templates) for discovery; Premium for AI-generated</li>
+                <li><strong>Subscription Tiers:</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Basic: ₹49/month — Multiple languages, limited AI</li>
+                        <li>Pro: ₹149/month — Unlimited AI, priority support, offline downloads</li>
+                        <li>Team: ₹499/month — Multi-user, team analytics, custom commentary style</li>
+                    </ul>
+                </li>
+                <li><strong>B2B Partnerships:</strong> License commentary engine to sports broadcasters, apps, venues</li>
+                <li><strong>Ads (Phase 2):</strong> Sponsored commentary ("Brought to you by..."), product placements</li>
+            </ul>
+            <div class="highlight" style="margin-top: 40px;">
+                <strong>Unit Economics:</strong> 1M users @ 5% premium penetration (50K paid) @ ₹100/month ARPU = ₹5Cr MRR by Year 1
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Roadmap -->
+    <div class="slide roadmap">
+        <h2>Roadmap 🗺️</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-phase">Phase 1: Q1 2026</div>
+                <div class="timeline-detail">
+                    • Real-time match APIs<br>
+                    • Android/iOS apps<br>
+                    • Gemini integration<br>
+                    • Beta launch (10K users)
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-phase">Phase 2: Q2-Q3 2026</div>
+                <div class="timeline-detail">
+                    • B2B partnerships<br>
+                    • Regional streamer integrations<br>
+                    • Team analytics<br>
+                    • 100K+ users
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-phase">Phase 3: Q4 2026+</div>
+                <div class="timeline-detail">
+                    • Multi-sport expansion<br>
+                    • International markets<br>
+                    • Custom AI models<br>
+                    • IPO/Acquisition target
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Demo -->
+    <div class="slide demo">
+        <h2>Live Demonstration 🎬</h2>
+        <div style="text-align: center;">
+            <p style="margin-bottom: 30px; font-size: 1.3rem;">Watch CricketAI generate real-time commentary</p>
+            <div class="demo-container">
+                <div class="demo-placeholder">
+                    <h3>🌐 Interactive Demo (PoC)</h3>
+                    <p><strong>Click "Next Slide" to open the live app →</strong></p>
+                    <p style="font-size: 0.95rem; margin-top: 20px; opacity: 0.7;">
+                        <strong>PoC Features:</strong> Local match data (not live APIs)
+                    </p>
+                    <p style="font-size: 0.9rem; opacity: 0.6; line-height: 1.5;">
+                        ✓ Real-time commentary generation<br>
+                        ✓ Multiple languages (EN/HI/TA/TE)<br>
+                        ✓ Voice powered by "No AI" (local) or "OpenAI"<br>
+                        ✓ Text-to-speech playback<br>
+                        ✗ Popular commentator voices (V2 feature)
+                    </p>
+                </div>
+            </div>
+            <p style="margin-top: 30px; font-size: 1rem; opacity: 0.8;">
+                ✓ Select match<br>
+                ✓ Choose language & voice mode<br>
+                ✓ Listen to dramatic commentary<br>
+                ✓ Toggle speed & AI mode
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 9: Closing -->
+    <div class="slide closing">
+        <div style="text-align: center;">
+            <div class="emoji">🚀</div>
+            <h1>Let's Build the Future of Cricket Commentary</h1>
+            <p class="subtitle" style="margin-top: 40px;">CricketAI: The AI Commentary Platform for India's Cricket Nation</p>
+            <div style="margin-top: 80px; font-size: 1.2rem; line-height: 2;">
+                <p><strong>Investment: $500K - $2M</strong> (Product • Team • Launch)</p>
+                <p style="margin-top: 20px; opacity: 0.9;">Q&A & Demo • Let's Talk</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Navigation -->
+<div class="button-group">
+    <button class="btn btn-prev" onclick="prevSlide()">← Previous</button>
+    <button class="btn btn-next" onclick="nextSlide()">Next →</button>
+</div>
+
+<div class="slide-indicator" id="slideIndicator"></div>
+<div class="slide-counter" id="slideCounter"></div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function showSlide(n) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[n].classList.add('active');
+        updateIndicators();
+        updateCounter();
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    function updateIndicators() {
+        const indicator = document.getElementById('slideIndicator');
+        indicator.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'indicator-dot' + (i === currentSlide ? ' active' : '');
+            dot.onclick = () => {
+                currentSlide = i;
+                showSlide(currentSlide);
+            };
+            indicator.appendChild(dot);
+        }
+    }
+
+    function updateCounter() {
+        document.getElementById('slideCounter').textContent = `${currentSlide + 1} / ${totalSlides}`;
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevSlide();
+        }
+    });
+
+    // Initialize
+    showSlide(0);
+</script>
+
+</body>
+</html>

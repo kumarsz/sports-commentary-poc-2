@@ -1,102 +1,102 @@
 {
   "commentary_templates": {
     "dot": [
-      "Tight line from the bowler. Just a dot.",
-      "No runs off that delivery!",
-      "Excellent bowling, well defended.",
-      "The bowler is on top here!",
-      "Solid defense, no runs given away."
+      "Bowler maintained tight control with that delivery. No runs conceded.",
+      "Well-directed line and length. The batter couldn't find opportunities here.",
+      "Disciplined bowling execution. Dot ball results in another maiden ball sequence.",
+      "The bowler's accuracy is evident. Batter forced to play defensively.",
+      "Strategic bowling restricts scoring. No boundary opportunities presented."
     ],
     "single": [
-      "Easy single picked up!",
-      "A run off that one.",
-      "Single! Quick work on the field.",
-      "Just finding the gaps.",
-      "One more added to the total."
+      "The batter identified a gap and pushed for the single. Measured response to the delivery.",
+      "Quick singles are essential in modern cricket. One run added to the tally.",
+      "The batter showed batting awareness by finding the gap. Smart cricket.",
+      "Single run indicates the batsman read the length effectively.",
+      "The bowler's line opened up a scoring opportunity for the single."
     ],
     "two": [
-      "Two! Good running between the wickets.",
-      "A comfortable two.",
-      "Two runs! The batsman was quick.",
-      "Pushing the ball around nicely.",
-      "A brace there."
+      "The batter drove well through the off-side. Two runs completed with good running.",
+      "Controlled shot execution resulted in a brace. Effective batting display.",
+      "The batsman showed excellent footwork. Two runs justified the aggressive approach.",
+      "Quality batting sees the batter pick up two comfortable runs.",
+      "The delivery allowed the batter room to maneuver. Two runs the result."
     ],
     "four": [
-      "Boundary! That's a four!",
-      "Excellent shot for four!",
-      "Four! Beautiful batting!",
-      "Powered away for four!",
-      "Batter finds the boundary!"
+      "A well-timed shot finds the boundary. The batter capitalized on the short delivery.",
+      "Four runs. The bowler's length was too full. Skillful batting on display.",
+      "The batter executed the shot with precision. Four runs added to the score.",
+      "Textbook boundary. The batter read the length correctly and punished accordingly.",
+      "Quality cricket on display. The batter found the gap and the boundary fence."
     ],
     "six": [
-      "Out of the ground! That's a six!",
-      "Over the ropes! What a shot!",
-      "SIX! That's a monster hit!",
-      "Into the stands! Absolute carnage!",
-      "BOOM! That's gone for six!"
+      "The batter has hit that over the ropes. Aggressive shot selection with six runs.",
+      "The bowler's delivery was short. The batter responded with a powerful shot, six runs.",
+      "Exceptional batting. The batter cleared the boundary with considerable ease.",
+      "The batter demonstrated power and technique. Six runs over the boundary.",
+      "A decisive shot from the batter. The ball has cleared the fence for six."
     ],
     "wicket": [
-      "That's OUT! What a breakthrough!",
-      "WICKET! The bowler strikes!",
-      "The batter has to go! Fantastic bowling!",
-      "One down! The pressure paid off!",
-      "GONE! Another one bites the dust!"
+      "The bowler has made a breakthrough. Excellent tactical bowling has claimed a wicket.",
+      "Wicket down. The bowler applied pressure and it has paid off.",
+      "The batsman's resistance has ended. The bowler executed the plan perfectly.",
+      "A key moment in the match. The bowler has struck and removed the batter.",
+      "Strategic bowling has resulted in success. Wicket column updated."
     ],
     "wicket_bowled": [
-      "BOWLED! Middle stump is destroyed!",
-      "Bowled! What a yorker!",
-      "The stumps are splayed! Clean bowled!"
+      "Bowled! The bowler has found the stumps. Exceptional delivery execution.",
+      "The batter has been bowled. The bowler beat the bat with a well-planned delivery.",
+      "Clean bowling. The delivery found its mark and disturbed the stumps."
     ],
     "wicket_lbw": [
-      "LBW! That's plumb in front!",
-      "Leg before wicket! Umpire's finger is up!",
-      "Hitting the pad! LBW given!"
+      "LBW given. The batter was struck in front of the stumps. Clear decision.",
+      "Leg before wicket. The bowler's line and length combination was effective.",
+      "LBW! The bowler's discipline has resulted in wicket."
     ],
     "wicket_caught": [
-      "CAUGHT! What a catch!",
-      "Out caught! The fielder has done the job!",
-      "Caught at the boundary! Fantastic grab!"
+      "Caught! The fielder has taken an important catch. The batter's error is costly.",
+      "Out caught. The fielder positioned well and executed the catch flawlessly.",
+      "Excellent catch. The fielder's positioning and execution have paid dividends."
     ]
   },
   "bowler_specific": {
     "Bumrah": {
       "dot": [
-        "Bumrah with a tight line. Dot ball.",
-        "Bumrah's accuracy is on display here.",
-        "Excellent bowling from Bumrah!"
+        "Bumrah maintains tight control of the line and length. Dot ball.",
+        "Bumrah's consistency is on display. The batter couldn't find scoring opportunities.",
+        "Disciplined bowling from Bumrah. The batter forced to play defensively."
       ],
       "yorker": [
-        "Bumrah's deadly yorker! Ripper!",
-        "Bumrah bowls a perfect yorker!",
-        "Yorker from Bumrah! What a delivery!"
+        "Bumrah has bowled a yorker. Perfect execution of the planned delivery.",
+        "Yorker from Bumrah. Strategic bowling at the crease level.",
+        "Bumrah employs the yorker effectively. The batter had no option to score."
       ],
       "wicket": [
-        "Bumrah strikes! Another one down!",
-        "Bumrah has his man! Brilliant bowling!"
+        "Bumrah breaks through. Tactical bowling has resulted in success.",
+        "Bumrah claims a wicket. The bowler's execution of the plan has paid off."
       ]
     },
     "Virat Kohli": {
       "four": [
-        "Virat finds the boundary! Classic shot!",
-        "Virat plays it with class!",
-        "The King Kohli gets going!"
+        "Kohli has driven it through the off-side. Four runs with controlled technique.",
+        "Virat demonstrates batting expertise. Four runs with textbook stroke.",
+        "Kohli reads the delivery and scores four. Measured batting on display."
       ],
       "six": [
-        "Virat launches it! Over the ropes!",
-        "Vintage Virat! Absolute carnage!",
-        "Kohli on fire! That's a six!"
+        "Kohli has hit it over the boundary. Aggressive but controlled approach for six runs.",
+        "Virat clears the ropes. Powerful batting demonstration with six runs.",
+        "Kohli responds with authority. The ball has cleared the boundary for six."
       ]
     },
     "Rajat Patidar": {
       "four": [
-        "Rajat Patidar puts it away!",
-        "Patidar finds the boundary!",
-        "The young gun strikes four!"
+        "Patidar finds the gap. Four runs with good batting awareness.",
+        "Rajat Patidar executes the shot well. Boundary scored with four runs.",
+        "Patidar demonstrates good footwork. Four runs the result of quality batting."
       ],
       "six": [
-        "PATIDAR! Into the stands!",
-        "Massive six from Patidar!",
-        "Patidar goes boom!"
+        "Patidar has cleared the boundary. Aggressive batting results in six runs.",
+        "Rajat Patidar shows power in the shot. Six runs over the fence.",
+        "Patidar's aggressive approach yields six runs."
       ]
     }
   },

@@ -12,5 +12,19 @@
     "description": "Ben Stokes to Jhye Richardson. Length ball, outside off stump on the back foot pushing, to mid on for no runs, fielded by Duckett.",
     "commentary": "Ben Stokes to Jhye Richardson. Length ball, outside off stump on the back foot pushing, to mid on for no runs, fielded by Duckett.",
     "timestamp": "2025-12-26T05:00:00Z"
+  },
+  {
+    "match_id": "ashes-2025-mcg-4th-day2",
+    "ball_number": 2,
+    "over": 1,
+    "ball_in_over": 2,
+    "runs": 2,
+    "bowler": "Ben Stokes",
+    "batter": "Jhye Richardson",
+    "fielder_position": "mid wicket",
+    "event": "runs",
+    "description": "Ben Stokes to Jhye Richardson. Short pitched delivery, pulled down to mid wicket for two runs.",
+    "commentary": "Short pitched delivery. Richardson pulls it down the ground for a comfortable two.",
+    "timestamp": "2025-12-26T05:00:30Z"
   }
 ]

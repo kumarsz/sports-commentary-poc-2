@@ -201,6 +201,11 @@ app.get('/api/matches/:id/balls', async (req, res) => {
     let aiModeUsed = 'local';
     let openaiErrorMsg = null;
 
+    // STEP 1: Always generate local commentary (for "Actual" display)
+    console.log(`   → Generating local commentary for ${balls.length} balls...`);
+    const ballsWithLocalCommentary = generateCommentaryForBalls(balls, language);
+
+    // STEP 2: If OpenAI mode requested, also generate AI commentary
     if (aiMode === 'openai') {
       // Use OpenAI for commentary generation. Prefer client-provided key (session-only),
       // otherwise use server-configured OpenAI (if available).
@@ -213,8 +218,9 @@ app.get('/api/matches/:id/balls', async (req, res) => {
 
       try {
         // Pass clientProvidedKey (may be null) into generator - it will use server client if null
-        console.log(`   → Generating commentary with OpenAI for ${balls.length} balls...`);
-        ballsWithCommentary = await generateCommentaryForBallsWithOpenAI(balls, language, clientProvidedKey);
+        console.log(`   → Generating AI commentary with OpenAI for ${balls.length} balls...`);
+        const ballsWithAICommentary = await generateCommentaryForBallsWithOpenAI(ballsWithLocalCommentary, language, clientProvidedKey);
+        ballsWithCommentary = ballsWithAICommentary;
         aiModeUsed = 'openai';
         console.log(`   ✅ OpenAI generation successful - ${ballsWithCommentary.length} balls processed`);
       } catch (openaiError) {
@@ -244,16 +250,16 @@ app.get('/api/matches/:id/balls', async (req, res) => {
           });
         }
         
-        // For other errors, fallback to local mode
+        // For other errors, fallback to local mode (commentary is already there)
         openaiErrorMsg = openaiError.message;
         console.log(`   → Falling back to local mode due to error`);
-        ballsWithCommentary = generateCommentaryForBalls(balls, language);
+        ballsWithCommentary = ballsWithLocalCommentary;
         aiModeUsed = 'local';
       }
     } else {
-      // Use local lookups (default)
+      // Use local lookups only (default)
       console.log(`   → Using local lookup tables for commentary`);
-      ballsWithCommentary = generateCommentaryForBalls(balls, language);
+      ballsWithCommentary = ballsWithLocalCommentary;
       aiModeUsed = 'local';
     }
 

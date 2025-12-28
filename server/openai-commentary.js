@@ -164,15 +164,16 @@ async function generateCommentaryForBallsWithOpenAI(balls, language = 'en', apiK
           max_tokens: 100
         });
 
-        const commentary = response.choices[0]?.message?.content?.trim();
-        if (!commentary) throw new Error('Empty response from OpenAI');
+        const aiCommentary = response.choices[0]?.message?.content?.trim();
+        if (!aiCommentary) throw new Error('Empty response from OpenAI');
 
         // Log the output
-        console.log(`   🎙️  Ball #${ball.ball_number}: OUTPUT → "${commentary}"`);
+        console.log(`   🎙️  Ball #${ball.ball_number}: OUTPUT → "${aiCommentary}"`);
 
         results.push({
           ...ball,
-          commentary
+          commentary: ball.commentary,  // Preserve the original/local commentary
+          aiCommentary: aiCommentary    // Add the AI-generated dramatic commentary
         });
 
         // Small delay to avoid rate limiting
@@ -183,10 +184,11 @@ async function generateCommentaryForBallsWithOpenAI(balls, language = 'en', apiK
         if (err.status === 429 || err.message.includes('quota') || err.message.includes('exceeded')) {
           throw err;
         }
-        // For other non-critical errors, fallback to basic commentary
+        // For other non-critical errors, fallback to original commentary only
         results.push({
           ...ball,
-          commentary: `${ball.bowler} bowls, ${ball.batter} plays it.`
+          commentary: ball.commentary  // Keep original commentary
+          // No aiCommentary if generation failed
         });
       }
     }
@@ -215,25 +217,43 @@ function describeBall(ball) {
  */
 function getSystemPrompt(language) {
   const prompts = {
-    en: `You are a legendary cricket commentator known for dramatic, exciting, and engaging ball-by-ball commentary. 
-Generate 1-2 sentences of dramatic cricket commentary that captures the excitement and tension of the moment. 
-Be vivid, use cricket metaphors, and make the listener feel the drama of the game.
-Keep it to 1-2 sentences maximum.`,
+    en: `You are a live cricket commentator with natural, punchy delivery and dramatic intonation.
+Generate brief, engaging cricket commentary like you're speaking live during a match.
+Style: Short, snappy sentences. Use active voice. Focus on action and reaction.
+Tone: Dramatic, enthusiastic, knowledgeable. Not stiff or analytical.
+
+Examples:
+"Four! Beautiful shot down the ground!"
+"And he's out! Bowled by a fantastic delivery!"
+"Quick single taken!"
+"That's a terrific piece of fielding!"
+
+Keep it to 1-2 sentences maximum.
+Avoid: Flowery language, over-analysis, stacked adjectives.`,
     
-    hi: `आप एक प्रसिद्ध क्रिकेट कमेंटेटर हैं जो नाटकीय और रोमांचक कमेंटरी के लिए जाने जाते हैं।
-गेंद-दर-गेंद की नाटकीय क्रिकेट कमेंटरी जनरेट करें जो पल की उत्तेजना और तनाव को पकड़े।
-जीवंत रहें, क्रिकेट की बातें करें, और श्रोता को खेल का नाटक महसूस कराएं।
-अधिकतम 2 वाक्य।`,
+    hi: `आप एक अनुभवी क्रिकेट विश्लेषक हैं जो विश्लेषणात्मक और तकनीकी कमेंटरी के लिए जाने जाते हैं।
+गेंद-दर-गेंद की विश्लेषणात्मक क्रिकेट कमेंटरी जनरेट करें जो निम्नलिखित पर ध्यान केंद्रित करे:
+- गेंद की गुणवत्ता और निष्पादन
+- बल्लेबाज की तकनीक और प्रतिक्रिया
+- रणनीतिक निहितार्थ और मैच का संदर्भ
+- क्रिकेट के मौलिक सिद्धांत
+व्यावसायिक और विचारशील टोन बनाए रखें। अधिकतम 2 वाक्य।`,
     
-    ta: `நீங்கள் நாடகமயமான மற்றும் உத்தேஜக ஆன்ட்டிக் பற்றி பழகிய பிரபல கிரிக்கெட் வர்ணனாகாரர்.
-நாடகமயமான கிரிக்கெட் வர்ணனை உத்பா்திக்கவும் முறைபொறுப்பின் கூச சலிக்க.
-உயிருள்ள, கிரிக்கெட் உபமை பயன்படுத்தவும், மற்றும் நேயரை கொள்ளை உணர்ந்து பொழிய விடுங்கள்.
-அதிகபட்சம் 2 வாக்கியங்கள்.`,
+    ta: `நீங்கள் ஒரு அனுபவம் வாய்ந்த கிரிக்கெட் பகுப்பாய்வுகாரர், பகுப்பாய்வு மற்றும் தொழில்நுட்ப வர்ணனைக்கு பழகிய.
+பகுப்பாய்வு கிரிக்கெட் வர்ணனை உৎপாதન செய்யவும் இவற்றில் கவனம்:
+- பந்தின் தரம் மற்றும் செயல்பாடு
+- பல்லேலுவாரின் நுட்பங்கள் மற்றும் பதிலளிப்பு
+- உத்திவயவ அர்த்தங்கள் மற்றும் ஆட்ட சூழல்
+- கிரிக்கெட் அடிப்படைகள்
+தொழில்நுட்ப மற்றும் சிந்தனாசூல கோலை பராமரிக்கவும். அதிகபட்சம் 2 வாக்கியங்கள்.`,
     
-    te: `మీరు నాటకీయ మరియు ఉత్తేజితమైన క్రికెట్ వివరణకారుగా ఈ భాషను ఆలోచించండి.
-ప్రతిటి బంతిని నాటకీయమైన క్రికెట్ వర్ణన ఉత్పత్తి చేయండి.
-జీవంతమైన, క్రికెట్ ఉపమానాలను ఉపయోగించండి, మరియు వినేవారిని ఆట యొక్క నాటకం అనుభవించండి.
-గరిష్ట 2 వాక్యాలు.`
+    te: `మీరు ఒక అనుభవ సంపన్న క్రికెట్ విశ్లేషకుడు, విశ్లేషణాత్మక మరియు సాంకేతిక వ్యాఖ్యానం కోసం విఖ్యాతుడు.
+విశ్లేషణాత్మక క్రికెట్ వ్యాఖ్యానం ఉత్పత్తి చేయండి ఈ విషయాలపై దృష్టి సారిస్తూ:
+- బంతి యొక్క గుణమానం మరియు అమలు
+- బ్యాటర్ యొక్క నైపుణ్యాలు మరియు ప్రతిస్పందన
+- వ్యూహాత్మక చిక్కులు మరియు ఆట సందర్భం
+- క్రికెట్ సూత్రాలు
+ప్రత్యేక మరియు ఆలోచనాత్మక టోన్ నిర్వహించండి. గరిష్ట 2 వాక్యాలు.`
   };
 
   return prompts[language] || prompts['en'];
